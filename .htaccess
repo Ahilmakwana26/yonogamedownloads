@@ -1,0 +1,39 @@
+RewriteEngine On
+
+# Remove trailing slash from directories (except actual directories)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# Remove .php extensions
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Game details URL: /slug-name (check if it's a game slug)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/admin
+RewriteCond %{REQUEST_URI} !^/assets
+RewriteCond %{REQUEST_URI} !^/uploads
+RewriteCond %{REQUEST_URI} !^/ajax
+RewriteCond %{REQUEST_URI} !^/includes
+RewriteRule ^([^/]+)$ game-details.php?slug=$1 [L,QSA]
+
+# Error pages
+ErrorDocument 404 /index.php
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Protect sensitive files
+<FilesMatch "(db\.txt|\.env|\.git)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes
