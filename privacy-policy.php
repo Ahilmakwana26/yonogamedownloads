@@ -12,38 +12,31 @@ require_once 'includes/header.php';
             <h1 class="page-title">Privacy Policy</h1>
             
             <div class="card" style="padding:40px;margin-top:30px;">
-                <h2 style="margin-bottom:20px;">Introduction</h2>
-                <p style="margin-bottom:20px;">Welcome to YONO GAMES. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website. Please read this privacy policy carefully.</p>
+                <h2 style="margin-bottom:20px;">Privacy Policy</h2>
+                <p style="margin-bottom:20px;line-height:1.8;color:var(--text-gray);">At <?php echo SITE_NAME; ?>, we value the privacy of our visitors. This Privacy Policy explains how we collect, use, and protect user information when you visit our website.</p>
                 
                 <h2 style="margin-bottom:20px;margin-top:30px;">Information We Collect</h2>
-                <p style="margin-bottom:15px;">We may collect information about you in a variety of ways:</p>
-                <ul style="margin-left:20px;margin-bottom:20px;">
-                    <li style="margin-bottom:10px;">Personal identifiers (such as name and email address, if you contact us)</li>
-                    <li style="margin-bottom:10px;">Usage data and analytics</li>
-                    <li style="margin-bottom:10px;">Device and browser information</li>
-                    <li style="margin-bottom:10px;">Cookies and tracking technologies</li>
+                <p style="margin-bottom:15px;line-height:1.8;color:var(--text-gray);">We may collect basic non-personal information such as:</p>
+                <ul style="margin-left:25px;margin-bottom:20px;line-height:1.8;color:var(--text-gray);">
+                    <li style="margin-bottom:10px;">Browser type</li>
+                    <li style="margin-bottom:10px;">Device information</li>
+                    <li style="margin-bottom:10px;">Pages visited</li>
+                    <li style="margin-bottom:10px;">Website usage statistics</li>
                 </ul>
+                <p style="margin-bottom:20px;line-height:1.8;color:var(--text-gray);">This information helps us improve website performance and user experience.</p>
                 
-                <h2 style="margin-bottom:20px;margin-top:30px;">How We Use Your Information</h2>
-                <p style="margin-bottom:20px;">We use the information we collect for various purposes:</p>
-                <ul style="margin-left:20px;margin-bottom:20px;">
-                    <li style="margin-bottom:10px;">To provide, maintain, and improve our website</li>
-                    <li style="margin-bottom:10px;">To respond to your comments, questions, and requests</li>
-                    <li style="margin-bottom:10px;">To monitor and analyze trends, usage, and activities</li>
-                    <li style="margin-bottom:10px;">To send you updates about our services</li>
-                </ul>
-                
-                <h2 style="margin-bottom:20px;margin-top:30px;">Data Security</h2>
-                <p style="margin-bottom:20px;">We take reasonable measures to help protect your personal information from loss, theft, misuse, unauthorized access, disclosure, alteration, and destruction.</p>
+                <h2 style="margin-bottom:20px;margin-top:30px;">Cookies</h2>
+                <p style="margin-bottom:20px;line-height:1.8;color:var(--text-gray);">Our website may use cookies to improve browsing experience, remember preferences, and analyze website traffic.</p>
+                <p style="margin-bottom:20px;line-height:1.8;color:var(--text-gray);">Users can disable cookies through their browser settings if they prefer.</p>
                 
                 <h2 style="margin-bottom:20px;margin-top:30px;">Third-Party Links</h2>
-                <p style="margin-bottom:20px;">Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these third-party sites.</p>
+                <p style="margin-bottom:20px;line-height:1.8;color:var(--text-gray);">Our website may contain links to third-party websites or applications. We are not responsible for the privacy practices or content of external websites.</p>
                 
-                <h2 style="margin-bottom:20px;margin-top:30px;">Changes to This Privacy Policy</h2>
-                <p style="margin-bottom:20px;">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+                <h2 style="margin-bottom:20px;margin-top:30px;">Data Protection</h2>
+                <p style="margin-bottom:20px;line-height:1.8;color:var(--text-gray);">We do not sell or share personal user information with third parties. We take reasonable steps to maintain website security and protect user data.</p>
                 
-                <h2 style="margin-bottom:20px;margin-top:30px;">Contact Us</h2>
-                <p style="margin-bottom:20px;">If you have any questions about this Privacy Policy, please contact us through our Telegram channel.</p>
+                <h2 style="margin-bottom:20px;margin-top:30px;">Policy Updates</h2>
+                <p style="margin-bottom:20px;line-height:1.8;color:var(--text-gray);">We may update this Privacy Policy at any time without prior notice. Users are encouraged to check this page regularly for updates.</p>
             </div>
         </div>
     </section>

@@ -3,7 +3,7 @@ require_once 'includes/config.php';
 require_once 'includes/functions.php';
 
 if (!isset($_GET['slug'])) {
-    header('Location: ' . SITE_URL . '/games.php');
+    header('Location: ' . SITE_URL . '/list');
     exit;
 }
 
@@ -11,7 +11,7 @@ $slug = sanitizeInput($_GET['slug']);
 $game = getGameBySlug($slug);
 
 if (!$game) {
-    header('Location: ' . SITE_URL . '/games.php');
+    header('Location: ' . SITE_URL . '/list');
     exit;
 }
 
@@ -100,7 +100,7 @@ require_once 'includes/header.php';
                     <?php if ($related['id'] != $game['id']): ?>
                     <div class="game-card">
                         <span style="position:absolute;left:10px;top:10px;background:#000;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;"><?php echo $index + 1; ?></span>
-                        <img src="<?php echo $related['image'] ? htmlspecialchars($related['image']) : 'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=modern%20casino%20game%20logo%20dark%20theme&image_size=square_hd'; ?>" alt="<?php echo htmlspecialchars($related['title']); ?>" class="game-card-image">
+                        <img src="<?php echo $related['image'] ? htmlspecialchars($related['image']) : ' '; ?>" alt="<?php echo htmlspecialchars($related['title']); ?>" class="game-card-image" loading="lazy">
                         <div class="game-card-content">
                             <h3 class="game-card-title"><?php echo htmlspecialchars($related['title']); ?></h3>
                             <div class="game-card-meta">

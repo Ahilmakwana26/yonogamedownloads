@@ -13,7 +13,7 @@ if (empty($games)) {
     foreach($games as $index => $game) {
         echo '<div class="game-card">';
         echo '<span style="position:absolute;left:10px;top:10px;background:#000;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">' . ($index + 1) . '</span>';
-        echo '<img src="' . ($game['image'] ? htmlspecialchars($game['image']) : 'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=modern%20casino%20game%20logo%20dark%20theme&image_size=square_hd') . '" alt="' . htmlspecialchars($game['title']) . '" class="game-card-image">';
+        echo '<img src="' . ($game['image'] ? htmlspecialchars($game['image']) : ' ') . '" alt="' . htmlspecialchars($game['title']) . '" class="game-card-image" loading="lazy">';
         echo '<div class="game-card-content">';
         echo '<h3 class="game-card-title">' . htmlspecialchars($game['title']) . '</h3>';
         echo '<div class="game-card-meta">🎁 Sign Up Bonus: ₹' . htmlspecialchars($game['bonus'] ?? '500') . '<br>💰 Min. Withdraw: ₹' . htmlspecialchars($game['withdraw'] ?? '100') . '</div>';
