@@ -17,7 +17,7 @@ function isActive($page) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?php echo SITE_URL; ?>/assets/images/fav_icon.png" type="image/x-icon">
-    <title><?php echo isset($page_title) ? $page_title . ' | ' . SITE_NAME : SITE_NAME; ?></title>
+    <title><?php echo isset($page_title) ? $page_title : SITE_NAME; ?></title>
     <meta name="description" content="<?php echo isset($meta_description) ? $meta_description : 'Download latest Yono games, rummy, teen patti and more'; ?>">
     <?php if (isset($meta_keywords)): ?>
         <meta name="keywords" content="<?php echo htmlspecialchars($meta_keywords); ?>">

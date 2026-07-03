@@ -2,7 +2,7 @@
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
 
-$page_title = 'Home';
+$page_title = 'Yono Game Downloads - All Latest Yono Games 2026';
 $meta_description = 'Download latest Yono games, rummy, teen patti and more premium gaming apps';
 
 require_once 'includes/header.php';
