@@ -2,8 +2,10 @@
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
 
-$page_title = 'All Games';
-$meta_description = 'Browse all Yono games, rummy, teen patti and more gaming apps';
+$page_title = 'All Games - Browse Yono Games, Rummy, Teen Patti & More | ' . SITE_NAME;
+$meta_description = 'Browse our complete collection of Yono games, rummy, teen patti, and other premium gaming apps. Filter by category to find your favorite games with all details and download links.';
+$canonical_url = SITE_URL . '/yono-games';
+$og_type = 'website';
 
 $category = isset($_GET['category']) ? sanitizeInput($_GET['category']) : null;
 $games = getGames($category);

@@ -2,8 +2,10 @@
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
 
-$page_title = 'Contact Us';
-$meta_description = 'Contact ' . SITE_NAME . ' - Join our Telegram channel for updates';
+$page_title = 'Contact Us - ' . SITE_NAME;
+$meta_description = 'Contact ' . SITE_NAME . ' - Join our Telegram channel for the latest game updates, bonuses, and announcements.';
+$canonical_url = SITE_URL . '/contact';
+$og_type = 'website';
 
 require_once 'includes/header.php';
 ?>

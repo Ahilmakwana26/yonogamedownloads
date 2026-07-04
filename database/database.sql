@@ -14,6 +14,9 @@ CREATE TABLE IF NOT EXISTS admins (
 CREATE TABLE IF NOT EXISTS categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
+    slug VARCHAR(100) NOT NULL UNIQUE,
+    meta_title VARCHAR(255),
+    meta_description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -34,6 +37,11 @@ CREATE TABLE IF NOT EXISTS games (
     download_link VARCHAR(255),
     meta_title VARCHAR(255),
     meta_description TEXT,
+    meta_keywords VARCHAR(500),
+    focus_keyword VARCHAR(100),
+    og_image VARCHAR(255),
+    robots VARCHAR(50) DEFAULT 'index, follow',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL
 );
@@ -43,4 +51,4 @@ CREATE TABLE IF NOT EXISTS games (
 INSERT INTO admins (username, password) VALUES ('admin', '$2y$10$Yv9LDVR3VwGTHnlCIf2oGeTzlZEY91SL33DxSQ3Uh4wrXp/UfEq0m');
 
 -- Sample Categories
-INSERT INTO categories (name) VALUES ('New Games'), ('Other Games'), ('Rummy'), ('Slots');
+INSERT INTO categories (name, slug) VALUES ('New Games', 'new-games'), ('Other Games', 'other-games'), ('Rummy', 'rummy'), ('Slots', 'slots');

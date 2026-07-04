@@ -2,22 +2,24 @@
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
 
-$page_title = 'Yono Game Downloads - All Latest Yono Games 2026';
-$meta_description = 'Download latest Yono games, rummy, teen patti and more premium gaming apps';
+$page_title = 'Yono Game Downloads - Discover & Download Premium Gaming Apps';
+$meta_description = 'Discover and download the latest Yono games, rummy, teen patti, and premium gaming apps at Yono Game Downloads. Updated daily with new games and bonus offers.';
+$canonical_url = SITE_URL . '/';
+$og_type = 'website';
 
 require_once 'includes/header.php';
 $games = getGames(null, 8);
 ?>
     <section class="hero">
         <div class="container">
-            <h1>Premium Gaming Collection</h1>
-            <p>Download the latest Yono games, rummy, teen patti, and premium gaming apps. Fast, secure, and up-to-date downloads.</p>
+            <h1>Discover & Download Premium Gaming Apps</h1>
+            <p>Explore our curated collection of the latest Yono games, rummy, teen patti, and more. Fast, secure downloads with daily updates.</p>
         </div>
     </section>
     
     <section class="toggle-section">
         <div class="container">
-            <h2 style="text-align:center;margin-bottom:20px;">Download NEW YONO Games</h2>
+            <h2 style="text-align:center;margin-bottom:20px;">Explore Our Latest Games</h2>
             <div class="toggle-buttons">
                 <button class="toggle-btn active" data-type="all">⭐ New Games</button>
                 <button class="toggle-btn" data-type="trending">🎮 Other Games</button>
@@ -25,13 +27,13 @@ $games = getGames(null, 8);
         </div>
     </section>
     
-    <section class="games-section">
+    <section class="games-section" aria-labelledby="games-heading">
         <div class="container">
             <div class="games-grid" id="gamesContainer">
                 <?php foreach($games as $index => $game): ?>
                 <div class="game-card">
                     <span style="position:absolute;left:10px;top:10px;background:#000;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;"><?php echo $index + 1; ?></span>
-                    <img src="<?php echo $game['image'] ? htmlspecialchars($game['image']) : ' '; ?>" alt="<?php echo htmlspecialchars($game['title']); ?>" class="game-card-image" loading="lazy">
+                    <img src="<?php echo $game['image'] ? htmlspecialchars($game['image']) : ' '; ?>" alt="<?php echo htmlspecialchars($game['title']); ?> game logo" class="game-card-image" loading="lazy">
                     <div class="game-card-content">
                         <h3 class="game-card-title"><?php echo htmlspecialchars($game['title']); ?></h3>
                         <div class="game-card-meta">
@@ -40,7 +42,7 @@ $games = getGames(null, 8);
                         </div>
                     </div>
                     <div class="game-card-actions">
-                        <a href="<?php echo SITE_URL; ?>/<?php echo urlencode($game['slug']); ?>" class="btn-download">Download</a>
+                        <a href="<?php echo SITE_URL; ?>/<?php echo urlencode($game['slug']); ?>" class="btn-download" aria-label="Download <?php echo htmlspecialchars($game['title']); ?>">Download</a>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -51,25 +53,47 @@ $games = getGames(null, 8);
     <section class="page-content">
         <div class="container">
             <div class="about-card">
-                <h2 style="font-size: 28px;font-weight: 800;margin-bottom: 20px;">Welcome to <?php echo SITE_NAME; ?></h2>
-                <p style="color: var(--text-gray);margin-bottom: 15px;line-height: 1.8;"><?php echo SITE_NAME; ?> offers an excellent platform that allows you to browse through the latest online gaming and entertainment applications from one website. Get access to a regularly updated list of games with downloads, details about each app, bonuses, and an intuitive user interface.</p>
-                <p style="color: var(--text-gray);margin-bottom: 20px;line-height: 1.8;">Are you searching for the latest and most popular card games, color prediction apps, fantasy games, or gaming platforms? Our website can help you get all the latest games in just one click.</p>
+                <h2>Welcome to <?php echo SITE_NAME; ?></h2>
+                <p style="color: var(--text-gray);margin-bottom: 15px;line-height: 1.8;"><?php echo SITE_NAME; ?> is your trusted platform for discovering and downloading the latest online gaming applications. We curate a regularly updated collection of games with detailed reviews, bonus information, and secure download links.</p>
+                <p style="color: var(--text-gray);margin-bottom: 20px;line-height: 1.8;">Whether you're looking for card games, rummy, teen patti, or other premium gaming platforms, we bring you all the latest releases in one convenient location.</p>
                 
-                <h3 style="font-size: 22px;font-weight: 700;margin-bottom: 15px;">What You Will Get From <?php echo SITE_NAME; ?>?</h3>
+                <h3>Why Choose <?php echo SITE_NAME; ?>?</h3>
                 <ul style="color: var(--text-gray);margin-left: 25px;margin-bottom: 20px;line-height: 1.8;">
-                    <li>A regularly updated game collection</li>
-                    <li>Access to the easiest APK downloads</li>
-                    <li>A mobile responsive website</li>
-                    <li>An intuitive interface</li>
-                    <li>The latest bonus and reward information</li>
-                    <li>A safe browsing experience</li>
+                    <li>Daily updated game collection with new releases</li>
+                    <li>Verified and secure download links</li>
+                    <li>Mobile-optimized website for seamless browsing</li>
+                    <li>Comprehensive game details and bonus information</li>
+                    <li>User-friendly interface for easy navigation</li>
+                    <li>Safe and secure browsing experience</li>
                 </ul>
                 
-                <h3 style="font-size: 22px;font-weight: 700;margin-bottom: 15px;">Trending Gaming Applications</h3>
-                <p style="color: var(--text-gray);margin-bottom: 20px;line-height: 1.8;">Discover a wide range of trending gaming applications on our platform. Get access to such popular apps as <?php echo SITE_NAME; ?>, Teen Patti, rummy games, fantasy sports, and other entertainment platforms.</p>
+                <h3>Trending Game Categories</h3>
+                <p style="color: var(--text-gray);margin-bottom: 20px;line-height: 1.8;">Explore our diverse range of gaming categories including rummy, teen patti, slots, and more. Each game listing includes detailed information about features, bonuses, and minimum withdrawal limits to help you make informed choices.</p>
                 
-                <h3 style="font-size: 22px;font-weight: 700;margin-bottom: 15px;">Important Note</h3>
-                <p style="color: var(--text-gray);line-height: 1.8;">It should be noted that all the games and applications offered by us are exclusively for informational purposes. Please remember to gamble responsibly.</p>
+                <h3>Frequently Asked Questions</h3>
+                <div itemscope itemtype="https://schema.org/FAQPage">
+                    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h4 itemprop="name">Is <?php echo SITE_NAME; ?> safe to use?</h4>
+                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text" style="color: var(--text-gray);">Yes, <?php echo SITE_NAME; ?> is a safe platform for informational purposes. We do not host any APK files ourselves; instead, we provide links to official download sources. Always ensure you download from trusted sources and play responsibly.</p>
+                        </div>
+                    </div>
+                    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h4 itemprop="name">How often are new games added?</h4>
+                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text" style="color: var(--text-gray);">We update our game collection regularly to ensure you have access to the latest releases and updates from the best gaming apps available.</p>
+                        </div>
+                    </div>
+                    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h4 itemprop="name">Do you provide bonus information?</h4>
+                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text" style="color: var(--text-gray);">Yes! Each game listing includes detailed information about welcome bonuses, minimum withdrawal amounts, and other key features to help you choose the right game for you.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Responsible Gaming Notice</h3>
+                <p style="color: var(--text-gray);line-height: 1.8;">Please remember that gaming involves financial risk and is intended for users aged 18 and above. Play responsibly and within your means. This website is for informational purposes only.</p>
             </div>
         </div>
     </section>

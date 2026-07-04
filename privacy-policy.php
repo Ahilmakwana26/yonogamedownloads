@@ -2,8 +2,11 @@
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
 
-$page_title = 'Privacy Policy';
-$meta_description = 'Read our privacy policy to understand how we collect, use, and protect your information';
+$page_title = 'Privacy Policy - ' . SITE_NAME;
+$meta_description = 'Read the privacy policy of ' . SITE_NAME . ' to understand how we collect, use, and protect your information.';
+$canonical_url = SITE_URL . '/privacy-policy';
+$og_type = 'website';
+$meta_robots = 'noindex, follow';
 
 require_once 'includes/header.php';
 ?>

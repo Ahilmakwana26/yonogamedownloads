@@ -2,8 +2,10 @@
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
 
-$page_title = 'About Us';
-$meta_description = 'Learn more about ' . SITE_NAME . ' - your trusted source for premium gaming apps';
+$page_title = 'About Us - ' . SITE_NAME;
+$meta_description = 'Learn more about ' . SITE_NAME . ' - your trusted source for premium gaming apps. Discover trending games, bonuses, and secure download links.';
+$canonical_url = SITE_URL . '/about';
+$og_type = 'website';
 
 require_once 'includes/header.php';
 ?>

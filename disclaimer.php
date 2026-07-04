@@ -2,8 +2,11 @@
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
 
-$page_title = 'Disclaimer';
-$meta_description = 'Important disclaimer about our website and services';
+$page_title = 'Disclaimer - ' . SITE_NAME;
+$meta_description = 'Important disclaimer about ' . SITE_NAME . ' - understand our terms, limitations, and responsible gaming guidelines.';
+$canonical_url = SITE_URL . '/disclaimer';
+$og_type = 'website';
+$meta_robots = 'noindex, follow';
 
 require_once 'includes/header.php';
 ?>
