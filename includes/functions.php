@@ -15,6 +15,25 @@ function generateSlug($string) {
     return $string;
 }
 
+function getGameImageUrl($imagePath) {
+    if (empty($imagePath)) {
+        return 'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=modern%20casino%20game%20logo%20dark%20theme&image_size=square_hd';
+    }
+    
+    // Check if it's already a full URL
+    if (filter_var($imagePath, FILTER_VALIDATE_URL)) {
+        return $imagePath;
+    }
+    
+    // If it's just a filename (e.g., 'image.jpg'), prepend SITE_URL and uploads path
+    if (strpos($imagePath, '/') === false) {
+        return SITE_URL . '/uploads/' . $imagePath;
+    }
+    
+    // If it's a relative path (e.g., 'uploads/image.jpg'), prepend SITE_URL
+    return SITE_URL . '/' . ltrim($imagePath, '/');
+}
+
 function getGames($category = null, $limit = null, $offset = 0) {
     global $pdo;
     $sql = "SELECT g.*, c.name as category_name FROM games g LEFT JOIN categories c ON g.category_id = c.id";

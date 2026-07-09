@@ -92,7 +92,7 @@ function getCurrentUrl() {
                 </a>
                 <div class="nav-links">
                     <a href="<?php echo SITE_URL; ?>/" class="<?php echo isActive('index') ? 'active' : ''; ?>" aria-label="Home">Home</a>
-                    <a href="<?php echo SITE_URL; ?>/yono-games" class="<?php echo isActive('yono-games') ? 'active' : ''; ?>" aria-label="All Games">Games</a>
+                    <a href="<?php echo SITE_URL; ?>/allyonogames" class="<?php echo isActive('allyonogames') ? 'active' : ''; ?>" aria-label="All Yono Games">All Yono Games</a>
                     <a href="<?php echo SITE_URL; ?>/about" class="<?php echo isActive('about') ? 'active' : ''; ?>" aria-label="About Us">About Us</a>
                     <a href="<?php echo SITE_URL; ?>/contact" class="<?php echo isActive('contact') ? 'active' : ''; ?>" aria-label="Contact Us">Contact Us</a>
                     <a href="<?php echo TELEGRAM_LINK; ?>" class="btn-telegram" target="_blank" rel="noopener noreferrer" aria-label="Join Telegram">Join Telegram</a>
@@ -106,7 +106,7 @@ function getCurrentUrl() {
         </nav>
         <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
             <a href="<?php echo SITE_URL; ?>/" class="<?php echo isActive('index') ? 'active' : ''; ?>">Home</a>
-            <a href="<?php echo SITE_URL; ?>/yono-games" class="<?php echo isActive('yono-games') ? 'active' : ''; ?>">Games</a>
+            <a href="<?php echo SITE_URL; ?>/allyonogames" class="<?php echo isActive('allyonogames') ? 'active' : ''; ?>">All Yono Games</a>
             <a href="<?php echo SITE_URL; ?>/about" class="<?php echo isActive('about') ? 'active' : ''; ?>">About Us</a>
             <a href="<?php echo SITE_URL; ?>/contact" class="<?php echo isActive('contact') ? 'active' : ''; ?>">Contact Us</a>
             <a href="<?php echo TELEGRAM_LINK; ?>" class="btn-telegram" target="_blank" rel="noopener noreferrer">Join Telegram</a>

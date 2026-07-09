@@ -9,7 +9,7 @@
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <a href="<?php echo SITE_URL; ?>/" class="<?php echo isActive('index') ? 'active' : ''; ?>">Home</a>
-                    <a href="<?php echo SITE_URL; ?>/yono-games" class="<?php echo isActive('yono-games') ? 'active' : ''; ?>">All Games</a>
+                    <a href="<?php echo SITE_URL; ?>/allyonogames" class="<?php echo isActive('allyonogames') ? 'active' : ''; ?>">All Yono Games</a>
                     <a href="<?php echo SITE_URL; ?>/about" class="<?php echo isActive('about') ? 'active' : ''; ?>">About Us</a>
                     <a href="<?php echo SITE_URL; ?>/contact" class="<?php echo isActive('contact') ? 'active' : ''; ?>">Contact Us</a>
                 </div>

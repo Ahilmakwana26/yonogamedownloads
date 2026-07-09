@@ -39,6 +39,7 @@ require_once '../includes/header.php';
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Logo</th>
                         <th>Title</th>
                         <th>Category</th>
                         <th>Downloads</th>
@@ -49,6 +50,7 @@ require_once '../includes/header.php';
                     <?php foreach($games as $game): ?>
                     <tr>
                         <td><?php echo $game['id']; ?></td>
+                        <td><img src="<?php echo htmlspecialchars(getGameImageUrl($game['image'])); ?>" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></td>
                         <td><?php echo htmlspecialchars($game['title']); ?></td>
                         <td><?php echo htmlspecialchars($game['category_name'] ?? '-'); ?></td>
                         <td><?php echo htmlspecialchars($game['downloads'] ?? '0'); ?></td>

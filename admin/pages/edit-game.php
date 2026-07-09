@@ -29,7 +29,7 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = sanitizeInput($_POST['title']);
-    $slug = generateSlug($title);
+    $slug = generateSlug(sanitizeInput($_POST['slug']));
     $description = sanitizeInput($_POST['description']);
     $bonus = sanitizeInput($_POST['bonus']);
     $withdraw = sanitizeInput($_POST['withdraw']);
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $downloads = isset($_POST['downloads']) ? (int)$_POST['downloads'] : 0;
     $meta_title = sanitizeInput($_POST['meta_title']);
     $meta_description = sanitizeInput($_POST['meta_description']);
-    $meta_keyword = sanitizeInput($_POST['meta_keyword']);
+    $meta_keywords = sanitizeInput($_POST['meta_keyword']);
     $rating = isset($_POST['rating']) ? sanitizeInput($_POST['rating']) : '4.5';
     
     $image = $game['image'];
@@ -59,13 +59,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if (in_array($imageFileType, $allowedTypes)) {
             if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-                $image = SITE_URL . '/uploads/' . $fileName;
+                $image = $fileName; // Store just the filename in database
             }
         }
     }
     
     try {
-        $stmt = $pdo->prepare("UPDATE games SET title = :title, slug = :slug, description = :description, image = :image, bonus = :bonus, withdraw = :withdraw, category_id = :category_id, download_link = :download_link, version = :version, size = :size, downloads = :downloads, meta_title = :meta_title, meta_description = :meta_description, meta_keyword = :meta_keyword, rating = :rating WHERE id = :id");
+        $stmt = $pdo->prepare("UPDATE games SET title = :title, slug = :slug, description = :description, image = :image, bonus = :bonus, withdraw = :withdraw, category_id = :category_id, download_link = :download_link, version = :version, size = :size, downloads = :downloads, meta_title = :meta_title, meta_description = :meta_description, meta_keywords = :meta_keywords, rating = :rating WHERE id = :id");
         $stmt->execute([
             ':title' => $title,
             ':slug' => $slug,
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ':downloads' => $downloads,
             ':meta_title' => $meta_title,
             ':meta_description' => $meta_description,
-            ':meta_keyword' => $meta_keyword,
+            ':meta_keywords' => $meta_keywords,
             ':rating' => $rating,
             ':id' => $gameId
         ]);
@@ -125,13 +125,13 @@ require_once '../includes/header.php';
                     <input type="text" name="title" id="gameTitle" value="<?php echo htmlspecialchars($game['title']); ?>" required>
                 </div>
                 <div class="form-group">
-                    <label>Slug (Auto-generated)</label>
-                    <input type="text" name="slug" id="gameSlug" value="<?php echo htmlspecialchars($game['slug']); ?>" disabled style="background:#F5F5F5;">
+                    <label>Slug (Manual Entry)</label>
+                    <input type="text" name="slug" id="gameSlug" value="<?php echo htmlspecialchars($game['slug']); ?>" required placeholder="e.g., yono-rummy">
                 </div>
                 <div class="form-group">
                     <label>Current Game Logo</label>
                     <?php if ($game['image']): ?>
-                        <img src="<?php echo htmlspecialchars($game['image']); ?>" style="width:120px;height:120px;object-fit:cover;border-radius:12px;margin-bottom:10px;">
+                        <img src="<?php echo htmlspecialchars(getGameImageUrl($game['image'])); ?>" style="width:120px;height:120px;object-fit:cover;border-radius:12px;margin-bottom:10px;">
                     <?php endif; ?>
                 </div>
                 <div class="form-group">
@@ -185,7 +185,7 @@ require_once '../includes/header.php';
                 </div>
                 <div class="form-group">
                     <label>Meta Keywords</label>
-                    <input type="text" name="meta_keyword" value="<?php echo htmlspecialchars($game['meta_keyword'] ?? ''); ?>" placeholder="e.g., yono game, rummy, teen patti">
+                    <input type="text" name="meta_keyword" value="<?php echo htmlspecialchars($game['meta_keywords'] ?? ''); ?>" placeholder="e.g., yono game, rummy, teen patti">
                 </div>
                 <div class="form-group">
                     <label>Rating (1-5)</label>
@@ -196,11 +196,5 @@ require_once '../includes/header.php';
         </div>
     </div>
 </div>
-<script>
-document.getElementById('gameTitle').addEventListener('input', function() {
-    const title = this.value.toLowerCase();
-    const slug = title.replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-');
-    document.getElementById('gameSlug').value = slug;
-});
-</script>
+
 <?php require_once '../includes/footer.php'; ?>

@@ -17,7 +17,7 @@ if (!$game) {
 
 $page_title = $game['meta_title'] ?? $game['title'];
 $meta_description = $game['meta_description'] ?? substr($game['description'] ?? '', 0, 160);
-$meta_keywords = $game['meta_keyword'] ?? '';
+$meta_keywords = $game['meta_keywords'] ?? '';
 
 $relatedGames = getGames($game['category_name'], 4);
 
@@ -28,7 +28,7 @@ require_once 'includes/header.php';
             <div class="game-details-container">
                 <div class="game-sidebar">
                     <div class="game-logo-section">
-                        <img src="<?php echo $game['image'] ? htmlspecialchars($game['image']) : 'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=modern%20casino%20game%20logo%20dark%20theme&image_size=square_hd'; ?>" alt="<?php echo htmlspecialchars($game['title']); ?>" class="game-logo">
+                        <img src="<?php echo htmlspecialchars(getGameImageUrl($game['image'])); ?>" alt="<?php echo htmlspecialchars($game['title']); ?>" class="game-logo">
                         
                         <div class="game-quick-info">
                             <div class="quick-info-item">
@@ -100,7 +100,7 @@ require_once 'includes/header.php';
                     <?php if ($related['id'] != $game['id']): ?>
                     <div class="game-card">
                         <span style="position:absolute;left:10px;top:10px;background:#000;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;"><?php echo $index + 1; ?></span>
-                        <img src="<?php echo $related['image'] ? htmlspecialchars($related['image']) : ' '; ?>" alt="<?php echo htmlspecialchars($related['title']); ?>" class="game-card-image" loading="lazy">
+                        <img src="<?php echo htmlspecialchars(getGameImageUrl($related['image'])); ?>" alt="<?php echo htmlspecialchars($related['title']); ?>" class="game-card-image" loading="lazy">
                         <div class="game-card-content">
                             <h3 class="game-card-title"><?php echo htmlspecialchars($related['title']); ?></h3>
                             <div class="game-card-meta">

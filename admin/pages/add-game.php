@@ -14,7 +14,7 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = sanitizeInput($_POST['title']);
-    $slug = generateSlug($title);
+    $slug = generateSlug(sanitizeInput($_POST['slug']));
     $description = sanitizeInput($_POST['description']);
     $bonus = sanitizeInput($_POST['bonus']);
     $withdraw = sanitizeInput($_POST['withdraw']);
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $size = sanitizeInput($_POST['size']);
     $meta_title = sanitizeInput($_POST['meta_title']);
     $meta_description = sanitizeInput($_POST['meta_description']);
-    $meta_keyword = sanitizeInput($_POST['meta_keyword']);
+    $meta_keywords = sanitizeInput($_POST['meta_keyword']);
     $rating = isset($_POST['rating']) ? sanitizeInput($_POST['rating']) : '4.5';
     
     $image = null;
@@ -43,13 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if (in_array($imageFileType, $allowedTypes)) {
             if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-                $image = SITE_URL . '/uploads/' . $fileName;
+                $image = $fileName; // Store just the filename in database
             }
         }
     }
     
     try {
-        $stmt = $pdo->prepare("INSERT INTO games (title, slug, description, image, bonus, withdraw, category_id, download_link, version, size, meta_title, meta_description, meta_keyword, rating, downloads) VALUES (:title, :slug, :description, :image, :bonus, :withdraw, :category_id, :download_link, :version, :size, :meta_title, :meta_description, :meta_keyword, :rating, 0)");
+        $stmt = $pdo->prepare("INSERT INTO games (title, slug, description, image, bonus, withdraw, category_id, download_link, version, size, meta_title, meta_description, meta_keywords, rating, downloads) VALUES (:title, :slug, :description, :image, :bonus, :withdraw, :category_id, :download_link, :version, :size, :meta_title, :meta_description, :meta_keywords, :rating, 0)");
         $stmt->execute([
             ':title' => $title,
             ':slug' => $slug,
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ':size' => $size,
             ':meta_title' => $meta_title,
             ':meta_description' => $meta_description,
-            ':meta_keyword' => $meta_keyword,
+            ':meta_keywords' => $meta_keywords,
             ':rating' => $rating
         ]);
         $success = 'Game added successfully!';
@@ -104,8 +104,8 @@ require_once '../includes/header.php';
                     <input type="text" name="title" id="gameTitle" required>
                 </div>
                 <div class="form-group">
-                    <label>Slug (Auto-generated)</label>
-                    <input type="text" name="slug" id="gameSlug" disabled style="background:#F5F5F5;">
+                    <label>Slug (Manual Entry)</label>
+                    <input type="text" name="slug" id="gameSlug" required placeholder="e.g., yono-rummy">
                 </div>
                 <div class="form-group">
                     <label>Description</label>
@@ -165,11 +165,5 @@ require_once '../includes/header.php';
         </div>
     </div>
 </div>
-<script>
-document.getElementById('gameTitle').addEventListener('input', function() {
-    const title = this.value.toLowerCase();
-    const slug = title.replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-');
-    document.getElementById('gameSlug').value = slug;
-});
-</script>
+
 <?php require_once '../includes/footer.php'; ?>

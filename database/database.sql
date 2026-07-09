@@ -1,6 +1,6 @@
 -- Database: yonogamedownloads
-CREATE DATABASE IF NOT EXISTS yonogamedownloads;
-USE yonogamedownloads;
+CREATE DATABASE IF NOT EXISTS u413557689_yonogame;
+USE u413557689_yonogame;
 
 -- Admins table
 CREATE TABLE IF NOT EXISTS admins (

@@ -2,5 +2,4 @@ User-agent: *
 Disallow: /admin/
 Allow: /
 
-# Sitemap will be generated dynamically via sitemap.php
-# You can also manually update sitemap.xml
+Sitemap: https://yonogamedownloads.com/sitemap.xml

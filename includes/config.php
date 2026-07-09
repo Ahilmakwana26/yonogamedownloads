@@ -10,10 +10,20 @@ $host = $_SERVER['HTTP_HOST'];
 if ($host === 'yonogamedownloads.com' || $host === 'www.yonogamedownloads.com') {
     define('SITE_URL', 'https://yonogamedownloads.com');
 } else {
+    // Calculate base path to root directory (even from admin pages)
     $script_name = $_SERVER['SCRIPT_NAME'];
-    $script_path = dirname($script_name);
-    $script_path = rtrim($script_path, '/');
-    define('SITE_URL', $protocol . $host . $script_path);
+    $script_dirs = explode('/', trim($script_name, '/'));
+    $base_path = '';
+    // Find the root directory (the one with index.php, includes, admin, etc.)
+    // We'll go up until we find a directory that has 'uploads' or 'includes'
+    $current_dir = __DIR__;
+    $root_dir = dirname($current_dir); // __DIR__ is includes/, so root is parent
+    // Now calculate the path from document root to root_dir
+    $doc_root = $_SERVER['DOCUMENT_ROOT'];
+    $relative_path = str_replace(realpath($doc_root), '', realpath($root_dir));
+    $relative_path = str_replace('\\', '/', $relative_path);
+    $relative_path = rtrim($relative_path, '/');
+    define('SITE_URL', $protocol . $host . $relative_path);
 }
 
 define('SITE_NAME', 'Yono Game Downloads');
